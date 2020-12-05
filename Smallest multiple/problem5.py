@@ -1,21 +1,15 @@
 def smallest_multiple(factors):
 	factors = list(factors)
-	unique_factors = [n for i, n in enumerate(factors) if len([n%f for f in factors if not n%f]) != 1]
+	lowest = lcm(*factors[:2])
+	for n in factors[2:]:
+		lowest = lcm(n, lowest)
 
-	print(unique_factors)
-
-	total = 1
-	for n in unique_factors:
-		total *= n
-
-	return total
-
-# print(smallest_multiple(range(2, 20)))
+	return lowest
 
 def lcm(a, b):
-	a1 = min([a, b])
-	while a1%max([a, b]):
+	a1 = a
+	while a1%b:
 		a1 += a
 	return a1
 
-print(lcm(2, 4))
+print(smallest_multiple(range(1, 21)))
