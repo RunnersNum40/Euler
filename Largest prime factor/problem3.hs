@@ -1,7 +1,14 @@
 factor :: Integer -> Integer -> Integer
 factor n f
-	| n%f == 0 = factor (n/f) f
-	| otherwise = n
+    | n `mod` f == 0 = factor (n `div` f) f
+    | otherwise = n
+
+maxFactor :: Integer -> Integer
+maxFactor n = factors n 2
+    where
+        factors n i
+            | n == 1 = i
+            | otherwise = factors (factor n i) i+1
 
 main :: IO()
-main = print(sumFib(4000000)) 
+main = print(maxFactor 600851475143)

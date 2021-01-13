@@ -1,11 +1,7 @@
-sumFib :: Integer -> Integer
-sumFib limit = sumFib' 0 2 0 limit
-
-sumFib' :: Integer -> Integer -> Integer -> Integer -> Integer
-sumFib' a b acc limit
-    | b > limit = acc
-    | otherwise = sumFib' b (4*b+a) newAcc limit
-        where newAcc = b + acc
+fibSum :: Integer -> Integer -> Integer -> Integer
+fibSum a b limit
+    | b >= limit = 0
+    | b < limit = b + (fibSum b (4*b+a) limit)
 
 main :: IO()
-main = print(sumFib(4000000)) 
+main = print(fibSum 0 2 4000000)
