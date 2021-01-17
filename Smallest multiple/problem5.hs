@@ -1,5 +1,6 @@
-lcm :: Integer -> Integer -> Integer
-lcm a b
-	| a `mod` b != 0 = 
+lcmm :: Integral a => [a] -> a
+lcmm [] = 1
+lcmm (x:xs) = lcm x (lcmm xs)
 
-multiple xn = map (lcm n) xn
+main :: IO()
+main = print(lcmm [1..21])

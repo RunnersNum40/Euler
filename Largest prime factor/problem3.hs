@@ -11,4 +11,4 @@ maxFactor n = factors n 2
             | otherwise = factors (factor n i) i+1
 
 main :: IO()
-main = print(maxFactor 600851475143)
+main = print(factor 65975 5)
